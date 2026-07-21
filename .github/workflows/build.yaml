@@ -4,9 +4,9 @@ on:
     branches:
       - main
 
-    pull_request:
-      branches:
-        - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -18,11 +18,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
+          cache: npm
 
-      - name: Install Dependencies
+      - name: Install all the dependencies
         run: npm install
-      - name: Run lint
+      - name: Run linting on the code
         run: npm run lint
 
-      - name: Run build
+      - name: Build the React application
         run: npm run build
